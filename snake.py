@@ -17,11 +17,17 @@ class Snake:
 
     def create_snake(self):
         for position in STARTING_POSITIONS:
-            square = Turtle("square")
-            square.color("white")
-            square.penup()
-            square.goto(position)
-            self.squares.append(square)
+            self.add_square(position)
+
+    def add_square(self, position):
+        square = Turtle("square")
+        square.color("white")
+        square.penup()
+        square.goto(position)
+        self.squares.append(square)
+
+    def add_tail(self):
+        self.add_square(self.squares[-1].position())
 
     def move(self):
         for square_pos in range(len(self.squares) - 1, 0, -1):
@@ -45,3 +51,4 @@ class Snake:
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
+
