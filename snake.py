@@ -52,3 +52,11 @@ class Snake:
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
 
+    #Resetting the snake when it hits a wall, or its tail. Moving the snake to somewhere off screen and creating a new one
+    def reset(self):
+        for square in self.squares:
+            square.goto(1000,1000)
+        self.squares.clear()
+        self.create_snake()
+        self.head = self.squares[0]
+
